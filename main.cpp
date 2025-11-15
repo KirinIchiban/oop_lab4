@@ -35,7 +35,7 @@ int main() {
                 return 0;
 
             case 1: { 
-                cout << "Enter square data (cx cy radius): ";
+                cout << "Enter square (cx cy radius): ";
                 Square<double>* sq = new Square<double>();
                 if (cin >> *sq) {
                     figures.Add(shared_ptr<Shape<double>>(sq));
@@ -49,7 +49,7 @@ int main() {
             }
 
             case 2: {  
-                cout << "Enter triangle data (cx cy radius): ";
+                cout << "Enter triangle (cx cy radius angle): ";
                 Triangle<double>* tri = new Triangle<double>();
                 if (cin >> *tri) {
                     figures.Add(shared_ptr<Shape<double>>(tri));
@@ -63,7 +63,7 @@ int main() {
             }
 
             case 3: { 
-                cout << "Enter rectangle data (cx cy radius height_ratio): ";
+                cout << "Enter rectangle data (cx cy radius scale): ";
                 Rectangle<double>* rect = new Rectangle<double>();
                 if (cin >> *rect) {
                     figures.Add(shared_ptr<Shape<double>>(rect));

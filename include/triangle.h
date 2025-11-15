@@ -6,10 +6,10 @@ template <Scalar T>
 class Triangle : public Shape<T>
 {
 public:
-    Triangle() : Shape<T>(), vertex_angle(M_PI / 3) {
+    Triangle() : Shape<T>(), alpha(M_PI / 3) {
         this->make_figure();
     }
-    Triangle(const Point<T> &center, T radius, T vertex_angle_rad = M_PI / 3) : Shape<T>(center, radius), vertex_angle(vertex_angle_rad) {
+    Triangle(const Point<T> &center, T radius, T alpha_rad = M_PI / 3) : Shape<T>(center, radius), alpha(alpha_rad) {
         this->make_figure();
     }
 
@@ -20,7 +20,7 @@ public:
     Triangle& operator=(const Triangle& other) {
         if (this != &other) {
             Shape<T>::operator=(other);  
-            vertex_angle = other.vertex_angle; 
+            alpha = other.alpha; 
             make_figure(); 
         }
         return *this;
@@ -29,12 +29,12 @@ public:
     bool operator==(const Shape<T>& other) const override{
         auto o = dynamic_cast<const Triangle*>(&other);
         if (!o) return false;
-        return this->center == o->center && this->radius == o->radius && this->vertex_angle == o->vertex_angle;
+        return this->center == o->center && this->radius == o->radius && this->alpha == o->alpha;
     }
 
 
 protected:
-    T vertex_angle; 
+    T alpha; 
 
     void make_figure() override {
         this->coords.clear();
@@ -42,14 +42,12 @@ protected:
         T cx = this->center.get_x();
         T cy = this->center.get_y();
         T R  = this->radius;
-        T alpha = vertex_angle;
 
         // по теореме синусов
         T half_base = R * std::sin(alpha);
         T h = R * std::cos(alpha / 2);
 
-        bool is_sharp = (vertex_angle <= M_PI / 2);
-
+        bool is_sharp = (alpha <= M_PI / 2);
         T y_top, y_base;
         if (is_sharp) {
             y_top  = cy + 2*h/3;

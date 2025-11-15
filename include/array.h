@@ -43,7 +43,7 @@ void Array<T>::Add(const T& shape) {
 template<typename T>
 void Array<T>::Remove(size_t index) {
     if (size == 0) {
-        throw std::out_of_range("Array_is_empty");
+        throw std::out_of_range("Empty_array");
     }
     if (index >= size) {
         throw std::out_of_range("Out_of_range");

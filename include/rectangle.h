@@ -6,7 +6,7 @@ template <Scalar T>
 class Rectangle : public Shape<T>
 {
 public:
-    Rectangle(): Shape<T>(), scale(1) {
+    Rectangle(): Shape<T>(), scale(1.0) {
         this->make_figure();
     };
     Rectangle(const Point<T> &center, T radius, T us_scale = 1.0) : Shape<T>(center, radius), scale(us_scale) {

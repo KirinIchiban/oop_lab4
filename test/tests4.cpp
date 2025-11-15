@@ -18,7 +18,7 @@ TEST(FigureTest, SquareDefault) {
     EXPECT_EQ(s.Center().get_y(), 0.0);
 }
 
-TEST(FigureTest, SquareFromParams) {
+TEST(FigureTest, SquareByUs) {
     Square<double> s(Point<double>(1.0, 2.0), 3.0);
     EXPECT_EQ(s.get_radius(), 3.0);
     EXPECT_EQ(s.Center().get_x(), 1.0);
@@ -32,7 +32,7 @@ TEST(FigureTest, TriangleDefault) {
     EXPECT_EQ(t.Center().get_y(), 0.0);
 }
 
-TEST(FigureTest, RectangleFromParams) {
+TEST(FigureTest, RectanglebUs) {
     Rectangle<double> r(Point<double>(3.0, 4.0), 5.0, 2.0); 
     EXPECT_EQ(r.get_radius(), 5.0);
     EXPECT_EQ(r.Center().get_x(), 3.0);
@@ -63,7 +63,7 @@ TEST(FigureTest, RectangleArea) {
 
 // ТЕСТЫ ОПЕРАТОРОВ РАВЕНСТВА 
 
-TEST(FigureTest, SquareEquality) {
+TEST(FigureTest, SquareEq) {
     Square<double> s1(Point<double>(1, 2), 3.0);
     Square<double> s2(Point<double>(1, 2), 3.0);
     Square<double> s3(Point<double>(0, 0), 3.0);
@@ -79,7 +79,7 @@ TEST(FigureTest, SquareEquality) {
     EXPECT_FALSE(sh1 == sh4);
 }
 
-TEST(FigureTest, TriangleEquality) {
+TEST(FigureTest, TriangleEqual) {
     Triangle<double> t1(Point<double>(1, 2), 3.0, M_PI/3);
     Triangle<double> t2(Point<double>(1, 2), 3.0, M_PI/3);
     Triangle<double> t3(Point<double>(0, 0), 3.0, M_PI/3);
@@ -95,7 +95,7 @@ TEST(FigureTest, TriangleEquality) {
     EXPECT_FALSE(sh1 == sh4);
 }
 
-TEST(FigureTest, RectangleEquality) {
+TEST(FigureTest, RectangleEq) {
     Rectangle<double> r1(Point<double>(1, 2), 3.0, 2.0);
     Rectangle<double> r2(Point<double>(1, 2), 3.0, 2.0);
     Rectangle<double> r3(Point<double>(0, 0), 3.0, 2.0);
@@ -113,7 +113,7 @@ TEST(FigureTest, RectangleEquality) {
 
 // ТЕСТЫ РАЗНЫХ ФИГУР 
 
-TEST(FigureTest, DifferentShapesInequality) {
+TEST(FigureTest, DiffShapesEq) {
     Square<double> square(Point<double>(1, 2), 3.0);
     Triangle<double> triangle(Point<double>(1, 2), 3.0, M_PI/3);
     Rectangle<double> rectangle(Point<double>(1, 2), 3.0, 2.0);
@@ -134,7 +134,7 @@ TEST(FigureTest, SquareCopy) {
     EXPECT_DOUBLE_EQ(static_cast<double>(original), static_cast<double>(copy));
 }
 
-TEST(FigureTest, TriangleCopy) {
+TEST(FigureTest, TriangleCp) {
     Triangle<double> original(Point<double>(1, 2), 3.0, M_PI/3);
     Triangle<double> copy(original);
 
@@ -149,8 +149,6 @@ TEST(FigureTest, SquareMove) {
     Square<double> moved = std::move(original);
     EXPECT_DOUBLE_EQ(static_cast<double>(moved), original_area);
 }
-
-// ВЫВОД И ИМЕНА 
 
 TEST(FigureTest, SquareOutput) {
     Square<double> s(Point<double>(1, 2), 3.0);
